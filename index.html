@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./javascript/myScript.js" defer></script>
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Tic Tac Toe</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar left">
+            <div class="name">
+                <input type="text" class="usernameOne" placeholder="Enter name">
+                <button class="submit playerOne">Submit</button>
+            </div>
+            <h2>Select Player 1(X)</h2>
+            <button class="player one">Be Player 1</button>
+            <button class="bot one">Bot</button>
+            <h2 class="score one"><span class="playerOneName">Player 1:</span> <span>0</span></h2>
+        </div>
+
+        <div class="game-board">
+            <div class="result"></div>
+            <div class="board"></div>
+            <div class="result"></div>
+        </div>
+        <div class="sidebar right">
+            <div class="name">
+                <input type="text" placeholder="Enter name" class="usernameTwo">
+                <button class="submit playerTwo">Submit</button>
+            </div>
+            <h3>Select Player 2(O)</h3>
+            <button class="player two">Be Player 2</button>
+            <button class="bot two">Bot</button>
+            <h2 class="score two"><span class="playerTwoName">Player 2:</span> <span>0</span></h2>
+        </div>
+    </div>
+   <div class="footer">
+        <button class="restart">Restart</button>
+   </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+   
+  }
+:root{
+    --complimentary-color:#e1b382; 
+}
+body{
+    display: grid;
+    background-color: #2d545e;
+    margin: 0%;
+    
+}
+.header{
+    display: grid;
+    column-span: 1/6;
+    text-align: center;
+    background-color: var(--complimentary-color);
+    padding: 2%;
+    font-size: min(32px, 45px);
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+.sidebar{
+    background-color: var(--complimentary-color);
+    text-align: center;
+    padding: 5%;
+    min-height: 100%;
+}
+.game-board{
+    display: grid;
+    padding: 5vh;
+    grid-template-columns: repeat(3,1fr);
+    
+}
+.board{
+    display: grid;
+    grid-template-rows: repeat(3,15vh);
+    grid-template-columns: repeat(3,15vh);
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    
+    height: 15vh;
+    width: 15vh;
+    border: 1px solid #000000;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-size: 15vh;
+    color: #ffffff;
+}
+.result{
+    padding: 5vh;
+    font-size: 10vh;
+    color: #ffffff;
+}
+.player, .bot {
+    padding: 1vh;
+    margin: 1vh;
+}
+.score{
+    margin-top: 5vh;
+    display: grid;
+}
+[class = "box 1"],[class = "box 2"],[class = "box 3"]{
+    border-top: 0;
+}
+[class = "box 1"],[class = "box 4"],[class = "box 7"]{
+    border-left: 0;
+}
+[class = "box 3"],[class = "box 6"],[class = "box 9"]{
+    border-right: 0;
+}
+[class = "box 7"],[class = "box 8"],[class = "box 9"]{
+    border-bottom: 0;
+}
+.footer{
+    display: grid;
+    column-span: 1/6;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    background-color: var(--complimentary-color);
+    padding: 2%;
+    grid-template-columns:1fr;
+    justify-items: center;
+    align-content: center;
+    font-size: min(32px, 45px);
+}
+
+.restart{
+    width: 10%;
+}
