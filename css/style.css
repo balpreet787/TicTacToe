@@ -3,12 +3,15 @@
    
   }
 :root{
-    --complimentary-color:#e1b382; 
+    --complimentary-color:#ffffff; 
 }
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 body{
+    font-family: 'Silkscreen', cursive;
     display: grid;
     background-color: #2d545e;
     margin: 0%;
+    width: 100%;
     
 }
 .header{
@@ -22,12 +25,23 @@ body{
 .container{
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
+    height: 45vh;
+    padding: 0 10vh 10vh;
 }
 .sidebar{
     background-color: var(--complimentary-color);
     text-align: center;
     padding: 5%;
-    min-height: 100%;
+    margin: 5%;
+    min-height: 80%;
+}
+.username{
+   
+    width: 80%;
+    border-radius: 10vh;
+    padding: 2%;
+    text-align: center;
+    margin-bottom: 5%;
 }
 .game-board{
     display: grid;
@@ -37,6 +51,7 @@ body{
 }
 .board{
     display: grid;
+    font-family: Arial, sans-serif;
     grid-template-rows: repeat(3,15vh);
     grid-template-columns: repeat(3,15vh);
     justify-content: center;
@@ -55,7 +70,7 @@ body{
 }
 .result{
     padding: 5vh;
-    font-size: 10vh;
+    font-size: 7vh;
     color: #ffffff;
 }
 .player, .bot {
@@ -79,9 +94,12 @@ body{
     border-bottom: 0;
 }
 .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
     display: grid;
     column-span: 1/6;
-    height: 100%;
+    height: 5vh;
     margin: 0;
     text-align: center;
     background-color: var(--complimentary-color);
@@ -94,4 +112,36 @@ body{
 
 .restart{
     width: 10%;
+    justify-content: center;
+    text-align: center;
+}
+
+button{
+
+font-weight: 0;
+font-size: 14px;
+color: #fff;
+background-color: #000000;
+padding: 10px 30px;
+border: none;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 26px;
+transition : 1000ms;
+transform: translateY(0);
+align-items: center;
+cursor: pointer;
+text-transform: lowercase;
+}
+
+button:hover{
+
+background-color: #fff;
+color: #000000;
+border: solid 2px #000000;
+}
+
+.submit{
+    width: 60%;
+    font-size: 100%;
+    text-align: center;
 }

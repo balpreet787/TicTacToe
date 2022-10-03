@@ -1,48 +1,71 @@
-const gameBoard = document.querySelector(".game-board");
 const board = document.querySelector(".board");
-const playerOneScore = document.querySelector(".score.one span");
-const playerTwoScore = document.querySelector(".score.two span");
+const playerOneScore = document.querySelector(".playerOneScore");
+const playerTwoScore = document.querySelector(".playerTwoScore");
 const restart = document.querySelector(".restart");
 const result = document.querySelectorAll(".result");
 const submitPlayerOne = document.querySelector(".submit.playerOne");
 const submitPlayerTwo = document.querySelector(".submit.playerTwo");
-const usernameOne = document.querySelector(".usernameOne");
-const usernameTwo = document.querySelector(".usernameTwo");
-const playerOneName = document.querySelector(".playerOneName");
-const playerTwoName = document.querySelector(".playerTwoName");
+const usernameOne = document.querySelector(".username.one");
+const usernameTwo = document.querySelector(".username.two");
+const playerOneName = document.querySelectorAll(".playerOneName");
+const playerTwoName = document.querySelectorAll(".playerTwoName");
+const botOne = document.querySelector(".bot.one");
+const botTwo = document.querySelector(".bot.two");
 
-
-let box = [];
-let turn = 0;
-for (let i =0; i<=8; i++){
-    box.push(document.createElement("div"));
-    box[i].classList.add("box",(i+1));
-    board.appendChild(box[i]);
-    twoPlayerGame(box[i])
+//Building the board to play the game on
+function buildBoard(){
+    let box = [];
+    for (let i =0; i<=8; i++){
+        box.push(document.createElement("div"));
+        box[i].classList.add("box",(i+1));
+        board.appendChild(box[i]);
+        game(box[i])
+    }
+    return box;
 }
+
+
+const gameBoard = buildBoard();
+
 
 //create player factory function
 const Player = (username, submit, playerName)=>{
     let score = 0;
+    let turn = true;
     const addScore = () => score++;
     const getScore = () => score;
+    const changeTurn = (currentTurn) =>{
+        turn = currentTurn;
+    }
+    const getTurn = () =>{
+        return turn
+    };
     const getPlayerName = () => {
         submit.addEventListener('click', ()=>{
-            if (username.value != ""){
-                playerName.textContent = username.value + ":";
-            }
+            playerName.forEach(name => {
+                if (username.value != ""){
+                    name.textContent = username.value;
+                }
+            });
+                
         });
     };
 
-    return {getScore, addScore, getPlayerName};
+    return {getScore, addScore, getPlayerName,changeTurn,getTurn};
 };
 
-playerOne = Player(usernameOne, submitPlayerOne, playerOneName);
-playerTwo = Player(usernameTwo, submitPlayerTwo, playerTwoName);
+
+const playerOne = Player(usernameOne, submitPlayerOne, playerOneName);
+const playerTwo = Player(usernameTwo, submitPlayerTwo, playerTwoName);
 playerOne.getPlayerName();
 playerTwo.getPlayerName();
+
+console.log(typeof playerOne)
+
+
 // add a function so two players can play the game 
-function twoPlayerGame(square){
+function game(square){
+    
     square.addEventListener('click',()=>{
         if (square.textContent === "X"){
             square.textContent = "X";
@@ -50,20 +73,24 @@ function twoPlayerGame(square){
         else if(square.textContent === "O"){
             square.textContent = "O";
         }
-        else if (turn === 0){
+        else if (playerOne.getTurn() === true){
             square.textContent = "X";
-            turn = 1;
+            playerOne.changeTurn(false);
+            playerTwo.changeTurn(true);
+        
         }
-        else {
+        else if (playerTwo.getTurn() === true){
             square.textContent = "O";
-            turn = 0;
+            playerOne.changeTurn(true);
+            playerTwo.changeTurn(false);
     }
-    game();
+    gameResult();
     });
 }
 
 // function to check who wins the game
-function game(){
+function gameResult(){
+    let box = gameBoard;
     if ((box[0].textContent ==="X" && box[1].textContent ==="X" && box[2].textContent ==="X") ||
      (box[3].textContent ==="X" && box[4].textContent ==="X" && box[5].textContent ==="X") ||
      (box[6].textContent ==="X" && box[7].textContent ==="X" && box[8].textContent ==="X")||
@@ -107,9 +134,10 @@ function game(){
 }
 function restartGame(){
     restart.addEventListener('click', ()=>{
-        for (let i =0; i < box.length; i++){
-            box[i].textContent = "";
-            turn = 0
+        for (let i =0; i < gameBoard.length; i++){
+            gameBoard[i].textContent = "";
+            playerOne.changeTurn(true);
+            playerTwo.changeTurn(false);
             
         }
         for (let i = 0; i <result.length;i++){
