@@ -2,7 +2,8 @@ const board = document.querySelector(".board");
 const playerOneScore = document.querySelector(".playerOneScore");
 const playerTwoScore = document.querySelector(".playerTwoScore");
 const restart = document.querySelector(".restart");
-const result = document.querySelectorAll(".result");
+const resultOne = document.querySelector(".resultOne");
+const resultTwo = document.querySelector(".resultTwo");
 const submitPlayerOne = document.querySelector(".submit.playerOne");
 const submitPlayerTwo = document.querySelector(".submit.playerTwo");
 const usernameOne = document.querySelector(".username.one");
@@ -102,9 +103,7 @@ function gameResult(){
 
         playerOne.addScore();
         playerOneScore.textContent = playerOne.getScore();
-        for (let i = 0; i <result.length;i++){
-            result[i].textContent = "Player 1 wins!!";
-        }
+        resultOne.textContent = "Player 1 wins!!";
 
     }
     else if ((box[0].textContent ==="O" && box[1].textContent ==="O" && box[2].textContent ==="O") ||
@@ -118,17 +117,15 @@ function gameResult(){
 
        playerTwo.addScore();
        playerTwoScore.textContent = playerTwo.getScore();
-       for (let i = 0; i <result.length;i++){
-            result[i].textContent = "Player 2 wins!!";
-         }
+        resultTwo.textContent = "Player 2 wins!!";
    }
    else if (box[0].textContent !="" && box[1].textContent !="" && box[2].textContent !="" &&
    box[3].textContent !="" && box[4].textContent !="" && box[5].textContent !="" &&
    box[6].textContent !="" && box[7].textContent !="" && box[8].textContent !=""){
 
-        for (let i = 0; i <result.length;i++){
-             result[i].textContent = "It's a draw";
-        }
+        resultTwo.textContent = "It's a draw";
+        resultOne.textContent = "It's a draw";
+        
 
    }
 }
@@ -140,9 +137,8 @@ function restartGame(){
             playerTwo.changeTurn(false);
             
         }
-        for (let i = 0; i <result.length;i++){
-            result[i].textContent = "";
-        }
+        resultTwo.textContent = "";
+        resultOne.textContent = "";
     });
 }
 restartGame();

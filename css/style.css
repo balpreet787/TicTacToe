@@ -1,24 +1,33 @@
-@media only screen and (max-width: 600px) {
-    /* For mobile phones: */
-   
-  }
 :root{
     --complimentary-color:#ffffff; 
+    --main-color:#2d545e;
 }
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+@media screen and (max-width: 600px) {
+    /* For mobile phones: */
+    .restart{
+        font-size: 15px;
+    }
+    
+    button{
+        font-size: 15px;
+    }
+    
+  }
+
 body{
     font-family: 'Silkscreen', cursive;
-    display: grid;
-    background-color: #2d545e;
+    background-color: var(--main-color);
     margin: 0%;
     width: 100%;
+    color: var(--complimentary-color);
     
 }
 .header{
     display: grid;
     column-span: 1/6;
     text-align: center;
-    background-color: var(--complimentary-color);
     padding: 2%;
     font-size: min(32px, 45px);
 }
@@ -26,15 +35,15 @@ body{
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     height: 45vh;
-    padding: 0 10vh 10vh;
+    padding: 0 ;
 }
 .sidebar{
-    background-color: var(--complimentary-color);
     text-align: center;
     padding: 5%;
-    margin: 5%;
-    min-height: 80%;
+    border-radius: 1vw;
+    height: 100%;
 }
+
 .username{
    
     width: 80%;
@@ -42,35 +51,35 @@ body{
     padding: 2%;
     text-align: center;
     margin-bottom: 5%;
+    border: 0;
 }
 .game-board{
     display: grid;
-    padding: 5vh;
-    grid-template-columns: repeat(3,1fr);
-    
+    padding-top: 5vh;
+    justify-content: center;
+    align-items: center;
 }
 .board{
     display: grid;
     font-family: Arial, sans-serif;
     grid-template-rows: repeat(3,15vh);
-    grid-template-columns: repeat(3,15vh);
-    justify-content: center;
+    grid-template-columns: repeat(3,10vw);
+    justify-items: center;
     align-items: center;
 }
 .box{
     
-    height: 15vh;
-    width: 15vh;
+    height: 100%;
+    width: 100%;
     border: 1px solid #000000;
     text-align: center;
-    justify-content: center;
+    justify-items: center;
     align-content: center;
-    font-size: 15vh;
+    font-size: 7vw;
     color: #ffffff;
 }
-.result{
-    padding: 5vh;
-    font-size: 7vh;
+.resultOne, .resultTwo{
+    font-size: 4vw;
     color: #ffffff;
 }
 .player, .bot {
@@ -96,14 +105,13 @@ body{
 .footer{
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     display: grid;
     column-span: 1/6;
     height: 5vh;
     margin: 0;
     text-align: center;
-    background-color: var(--complimentary-color);
-    padding: 2%;
+    padding-bottom: 2%;
     grid-template-columns:1fr;
     justify-items: center;
     align-content: center;
@@ -114,15 +122,16 @@ body{
     width: 10%;
     justify-content: center;
     text-align: center;
+    font-size: 1vw
 }
 
 button{
 
 font-weight: 0;
-font-size: 14px;
-color: #fff;
+color: #ffffff;
 background-color: #000000;
-padding: 10px 30px;
+font-size: 1vw;
+padding: 10px;
 border: none;
 box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
 border-radius: 26px;
@@ -131,6 +140,7 @@ transform: translateY(0);
 align-items: center;
 cursor: pointer;
 text-transform: lowercase;
+text-align: center;
 }
 
 button:hover{
@@ -142,6 +152,5 @@ border: solid 2px #000000;
 
 .submit{
     width: 60%;
-    font-size: 100%;
-    text-align: center;
+    
 }
